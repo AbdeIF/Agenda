@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-body">
+            <h4>EDITANDO CONTATO</h4>
+            <hr>
+            <form action="{% url 'contato_edit' contato.id %}" method="post">
+                {% csrf_token %}
+                Nome:
+                <input class="form-control" type="text" name="nome" value="{{ contato.nome }}" required><br>
+                Sobrenome:
+                <input class="form-control" type="text" name="sobrenome" value="{{ contato.sobrenome }}" required><br>
+                Email:
+                <input class="form-control" type="email" name="email" value="{{ contato.email }}" required><br>
+                Data de Nascimento:
+                <input class="form-control" type="date" name="data_nascimento" value="{{ contato.data_nascimento }}" required><br>
+
+                <button class="btn btn-success" type="submit">Salvar</button>
+                <a class="btn btn-danger" href="{% url 'home' %}">Cancelar</a>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
